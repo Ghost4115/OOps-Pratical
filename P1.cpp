@@ -5,29 +5,70 @@ class Complex {
 public:
     float real;
     float img;
+
+    // Default constructor to initialize complex number to 0 + 0i
     Complex() : real(0), img(0) {}
+
+    // Overload + operator to add two complex numbers
+    Complex operator+(const Complex& other) {
+        Complex temp;
+        temp.real = this->real + other.real;
+        temp.img = this->img + other.img;
+        return temp;
+    }
+
+    // Overload * operator to multiply two complex numbers
+    Complex operator*(const Complex& other) {
+        Complex temp;
+        temp.real = this->real * other.real - this->img * other.img;
+        temp.img = this->real * other.img + this->img * other.real;
+        return temp;
+    }
+
+    // Function to print complex number in the format a + bi
+    void print() const {
+        cout << real;
+        if (img >= 0) 
+            cout << " + " << img << "i" << endl;
+        else 
+            cout << " - " << -img << "i" << endl;
+    }
 };
 
 int main() {
     Complex c1, c2, c3, c4;
-    cout << "Enter the real part of the first complex number:" << endl;
+
+    // Input for the first complex number
+    cout << "Enter the real part of the first complex number: ";
     cin >> c1.real;
-    cout << "Enter the imaginary part of the first complex number:" << endl;
+    cout << "Enter the imaginary part of the first complex number: ";
     cin >> c1.img;
-    cout << "Enter the real part of the second complex number:" << endl;
+
+    // Input for the second complex number
+    cout << "Enter the real part of the second complex number: ";
     cin >> c2.real;
-    cout << "Enter the imaginary part of the second complex number:" << endl;
+    cout << "Enter the imaginary part of the second complex number: ";
     cin >> c2.img;
-    cout << "The first complex number: " << c1.real << "+" << c1.img << "i" << endl;
-    cout << "The second complex number: " << c2.real << "+" << c2.img << "i" << endl;
-    c3.real = c1.real + c2.real;
-    c3.img = c1.img + c2.img;
-    c4.real = c1.real * c2.real - c1.img * c2.img;
-    c4.img = c1.real * c2.img + c1.img * c2.real;
-    cout << "The addition is: " << c3.real << "+" << c3.img << "i" << endl;
-    cout << "The multiplication is: " << c4.real << "+" << c4.img << "i" << endl;
- return 0;
+
+    // Display the complex numbers
+    cout << "The first complex number: ";
+    c1.print();
+    cout << "The second complex number: ";
+    c2.print();
+
+    // Addition and multiplication
+    c3 = c1 + c2;
+    c4 = c1 * c2;
+
+    // Display the results
+    cout << "The addition is: ";
+    c3.print();
+    cout << "The multiplication is: ";
+    c4.print();
+
+    return 0;
 }
+
 
 //O/P:
 Enter the real part of the first complex number:
