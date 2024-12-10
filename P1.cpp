@@ -1,3 +1,4 @@
+//(a+bi)×(c+di)=(a×c−b×d)+(a×d+b×c)i
 #include <iostream>
 using namespace std;
 
